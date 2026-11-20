@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLMAR NIGHTS — an open-world crime game</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.min.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="game-container"></div>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hidden">
+  <canvas id="minimap" width="190" height="190"></canvas>
+
+  <div id="top-right">
+    <div id="wanted-label"></div>
+    <div id="stars"></div>
+    <div id="money">$200</div>
+    <div id="clock">16:30</div>
+  </div>
+
+  <div id="mission-panel">
+    <div id="mission-title">FREE ROAM</div>
+    <div id="objective">Head to the gold marker to start your first job</div>
+  </div>
+
+  <div id="bottom-left">
+    <div id="health-bar"><div id="health-fill"></div></div>
+    <div id="health-text">100</div>
+  </div>
+
+  <div id="bottom-right">
+    <div id="ammo">AMMO 12 / 12</div>
+    <div id="speed-wrap"><span id="speed"></span><span id="speed-unit"></span></div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="crosshair"></div>
+  <div id="hint"></div>
+  <div id="damage-flash"></div>
+</div>
+
+<!-- ============ TITLE SCREEN ============ -->
+<div id="menu-screen" class="screen">
+  <div class="menu-inner">
+    <div class="title-kicker">WELCOME TO</div>
+    <h1 class="game-title">SOLMAR<br>NIGHTS</h1>
+    <div class="title-sub">An open-world crime game in sun-soaked Solmar Bay.<br>
+      Steal cars. Outrun the law. Run the city.</div>
+    <div class="menu-buttons">
+      <button id="new-game-btn" class="btn primary">New Game</button>
+      <button id="continue-btn" class="btn hidden">Continue</button>
+      <button id="help-btn" class="btn">How to Play</button>
+    </div>
+    <div class="menu-foot">5 story missions · taxi fares · 10 hidden packages · wanted system · free roam<br>
+      A fully original game — no assets, names or music from any commercial game.</div>
+  </div>
+</div>
+
+<!-- ============ HOW TO PLAY ============ -->
+<div id="help-screen" class="screen hidden">
+  <div class="panel">
+    <h2>How to Play</h2>
+    <div class="controls-grid">
+      <span>W A S D</span><span>Move / drive</span>
+      <span>Mouse</span><span>Look around (click to lock)</span>
+      <span>Shift</span><span>Run</span>
+      <span>Space</span><span>Jump · handbrake while driving</span>
+      <span>E</span><span>Enter / exit car</span>
+      <span>Right mouse</span><span>Aim</span>
+      <span>Left mouse</span><span>Shoot</span>
+      <span>R</span><span>Reload</span>
+      <span>P / Esc</span><span>Pause</span>
+      <span>M</span><span>Mute</span>
+    </div>
+    <p>Follow the gold marker to start missions. Commit crimes and the police
+      come after you — lose them by staying out of sight, or clear your wanted
+      level at the Pay 'n Spray garage. Drive a taxi to pick up fares, and find
+      all 10 hidden packages around the city. Your progress autosaves.</p>
+    <button id="help-back-btn" class="btn primary">Back</button>
+  </div>
+</div>
+
+<!-- ============ PAUSE ============ -->
+<div id="pause-screen" class="screen hidden">
+  <div class="panel">
+    <h2>Paused</h2>
+    <p>Solmar Bay waits for no one — except now.</p>
+    <div class="menu-buttons">
+      <button id="resume-btn" class="btn primary">Resume</button>
+      <button id="restart-mission-btn" class="btn">Restart Mission</button>
+      <button id="mute-btn" class="btn">Mute (M)</button>
+      <button id="quit-btn" class="btn">Save &amp; Quit to Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BUSTED ============ -->
+<div id="busted-screen" class="screen hidden">
+  <div class="panel busted">
+    <h2>BUSTED</h2>
+    <p id="busted-text">The Solmar Bay police took you in.</p>
+    <button id="busted-btn" class="btn primary">Walk Free</button>
+  </div>
+</div>
+
+<!-- ============ WASTED ============ -->
+<div id="wasted-screen" class="screen hidden">
+  <div class="panel wasted">
+    <h2>WASTED</h2>
+    <p>Rico didn't make it. Solmar General patched him up — for a price.</p>
+    <button id="wasted-btn" class="btn primary">Leave Hospital</button>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
